@@ -1,6 +1,7 @@
 package JFrames;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +21,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuBar2 = new javax.swing.JMenuBar();
         mbClientes = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiCadastrarCliente = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -32,8 +33,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         mbClientes.setText("Clientes");
 
-        jMenuItem1.setText("Cadastrar Clientes");
-        mbClientes.add(jMenuItem1);
+        jmiCadastrarCliente.setText("Cadastrar Clientes");
+        jmiCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastrarClienteActionPerformed(evt);
+            }
+        });
+        mbClientes.add(jmiCadastrarCliente);
 
         jMenuBar2.add(mbClientes);
 
@@ -56,6 +62,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarClienteActionPerformed
+        JOptionPane.showMessageDialog(null, "ok");
+        CadastCliente nCadastCliente = new CadastCliente();
+        this.add(nCadastCliente);
+        nCadastCliente.setVisible(true);
+    }//GEN-LAST:event_jmiCadastrarClienteActionPerformed
+
     public static void main(String args[]) {
        
         /* Create and display the form */
@@ -71,7 +84,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jmiCadastrarCliente;
     private javax.swing.JMenu mbClientes;
     // End of variables declaration//GEN-END:variables
 }
