@@ -63,7 +63,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarClienteActionPerformed
-        JOptionPane.showMessageDialog(null, "ok");
+        // CRIO UMA NOVA INSTANCIA DO JFRAME CADASTRO DE CLIENTE E EXIBO ELA.
         CadastCliente nCadastCliente = new CadastCliente();
         this.add(nCadastCliente);
         nCadastCliente.setVisible(true);
