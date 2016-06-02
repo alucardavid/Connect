@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JFrames;
-
-import java.awt.Component;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
+import jdk.nashorn.internal.runtime.options.Options;
+import programa.connect.Cliente;
 
 /**
  *
@@ -18,6 +13,12 @@ public class CadastCliente extends javax.swing.JInternalFrame {
 
     public CadastCliente() {
         initComponents();
+        tbxCodigo.setText(Integer.toString(Cliente.GerarCodigo()));
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+    }
+    
+    public static void main(String[] args) {
         
     }
     
@@ -35,6 +36,7 @@ public class CadastCliente extends javax.swing.JInternalFrame {
     }
    
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -84,8 +86,18 @@ public class CadastCliente extends javax.swing.JInternalFrame {
         });
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,14 +176,74 @@ public class CadastCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        int n;
         if (ValidarCampos()) {
-            JOptionPane.showMessageDialog(null, "ok");
+            try {
+                Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
+                nCliente.AdicionarCliente();
+                n = JOptionPane.showOptionDialog(null, "Gostaria de adicionar outro cliente?", "Connect", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, iconable);
+                if (n==0) {
+                    LimparCampos();
+                    tbxCodigo.setText(Integer.toString(Cliente.GerarCodigo()));
+                }
+                else{
+                    btnAlterar.setEnabled(true);
+                    btnExcluir.setEnabled(true);
+                }
+                
+                
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Todos os campos são obrigatorios");
         }
     }//GEN-LAST:event_btnGravarActionPerformed
 
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if (ValidarCampos()) {
+            try {
+                Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
+                nCliente.AlterarCliente();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (ValidarCampos()) {
+            try {
+                Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
+                nCliente.ExcluirCliente();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+            LimparCampos();
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatorios");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+    
+    private void LimparCampos(){
+        try {
+            Component[] components = this.getContentPane().getComponents();
+            for (Component component : components) {
+                if (component instanceof JTextField) {
+                    JTextComponent sObject = (JTextComponent) component;
+                    sObject.setText("");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;

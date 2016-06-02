@@ -113,8 +113,8 @@ public class Login extends javax.swing.JFrame {
         if(ValidarCampos() == true){ // SE ESTIVEREN PREENCHIDOS EU VERIFICO NA BASE DE DADOS O USUARIO E SENHA
             try {
                 //MÉTODO PARA OBTER OS DADOS DO BANCO
-                Connection conexao = Oracle.ObterConexao();
-                Statement statement = conexao.createStatement();
+                Connection conn = Oracle.ObterConexao();
+                Statement statement = conn.createStatement();
                 // COMANDO SQL QUERY
                 String query = "SELECT * FROM TS_LOGIN WHERE NOME='" + tbxUser.getText() + "' AND PWD='" + tbxPwd.getText() + "'";
                 ResultSet resultSet = statement.executeQuery(query);
@@ -132,8 +132,9 @@ public class Login extends javax.swing.JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Usuario ou password incorreto.");
-
-                }   
+                }
+                resultSet.close();
+                conn.close();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }

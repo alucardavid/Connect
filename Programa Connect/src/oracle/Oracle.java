@@ -7,14 +7,8 @@ import java.sql.*;
  * @author David
  */
 public class Oracle {
-    public static void main(String[] args) throws SQLException {
-        Connection conexao = ObterConexao();
-        Statement statement = conexao.createStatement();
-        String query = "SELECT * FROM TS_LOGIN";
-        ResultSet resultSet = statement.executeQuery(query);
-        if (resultSet.next()) {
-            System.out.println(resultSet.getDate("NOME"));
-        }
+    public static void main(String[] args) {
+        
     }
     
     public static Connection ObterConexao(){
