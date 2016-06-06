@@ -19,10 +19,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        dkpPrincipal = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         mbClientes = new javax.swing.JMenu();
         jmiCadastrarCliente = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jmiConsultarCliente = new javax.swing.JMenuItem();
+        jmnProjetos = new javax.swing.JMenu();
+        jmiCadastrarProjeto = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -30,6 +33,19 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connect");
+
+        dkpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout dkpPrincipalLayout = new javax.swing.GroupLayout(dkpPrincipal);
+        dkpPrincipal.setLayout(dkpPrincipalLayout);
+        dkpPrincipalLayout.setHorizontalGroup(
+            dkpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+        );
+        dkpPrincipalLayout.setVerticalGroup(
+            dkpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 645, Short.MAX_VALUE)
+        );
 
         mbClientes.setText("Clientes");
 
@@ -41,10 +57,27 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         mbClientes.add(jmiCadastrarCliente);
 
+        jmiConsultarCliente.setText("Consultar Cliente");
+        jmiConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultarClienteActionPerformed(evt);
+            }
+        });
+        mbClientes.add(jmiConsultarCliente);
+
         jMenuBar2.add(mbClientes);
 
-        jMenu5.setText("Edit");
-        jMenuBar2.add(jMenu5);
+        jmnProjetos.setText("Projetos");
+
+        jmiCadastrarProjeto.setText("Cadastrar Projeto");
+        jmiCadastrarProjeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastrarProjetoActionPerformed(evt);
+            }
+        });
+        jmnProjetos.add(jmiCadastrarProjeto);
+
+        jMenuBar2.add(jmnProjetos);
 
         setJMenuBar(jMenuBar2);
 
@@ -52,11 +85,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addComponent(dkpPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addComponent(dkpPrincipal)
         );
 
         pack();
@@ -65,9 +98,19 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jmiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarClienteActionPerformed
         // CRIO UMA NOVA INSTANCIA DO JFRAME CADASTRO DE CLIENTE E EXIBO ELA.
         CadastCliente nCadastCliente = new CadastCliente();
-        this.add(nCadastCliente);
+        dkpPrincipal.add(nCadastCliente);
         nCadastCliente.setVisible(true);
     }//GEN-LAST:event_jmiCadastrarClienteActionPerformed
+
+    private void jmiConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultarClienteActionPerformed
+        PesquisaClientes nPesquisaClientes = new PesquisaClientes();
+        dkpPrincipal.add(nPesquisaClientes);
+        nPesquisaClientes.setVisible(true);
+    }//GEN-LAST:event_jmiConsultarClienteActionPerformed
+
+    private void jmiCadastrarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarProjetoActionPerformed
+        
+    }//GEN-LAST:event_jmiCadastrarProjetoActionPerformed
 
     public static void main(String args[]) {
        
@@ -80,11 +123,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dkpPrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jmiCadastrarCliente;
+    private javax.swing.JMenuItem jmiCadastrarProjeto;
+    private javax.swing.JMenuItem jmiConsultarCliente;
+    private javax.swing.JMenu jmnProjetos;
     private javax.swing.JMenu mbClientes;
     // End of variables declaration//GEN-END:variables
 }

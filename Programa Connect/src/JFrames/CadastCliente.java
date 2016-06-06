@@ -2,7 +2,6 @@ package JFrames;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
-import jdk.nashorn.internal.runtime.options.Options;
 import programa.connect.Cliente;
 
 /**
@@ -18,8 +17,24 @@ public class CadastCliente extends javax.swing.JInternalFrame {
         btnExcluir.setEnabled(false);
     }
     
+    public CadastCliente(String nome, String rua, String cidade, String cep, String telefone, String cpfCnpj, String id){
+        initComponents();
+        tbxNome.setText(nome);
+        tbxRua.setText(rua);
+        tbxCidade.setText(cidade);
+        tbxCep.setText(cep);
+        tbxTelefone.setText(telefone);
+        tbxCnpjCpf.setText(cpfCnpj);
+        tbxCodigo.setText(id);
+        btnGravar.setEnabled(false);
+    }
+    
     public static void main(String[] args) {
         
+    }
+
+    CadastCliente(String toString, String string, String string0, String string1, String string2, String string3, String string4, String string5) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private boolean ValidarCampos(){
@@ -189,10 +204,8 @@ public class CadastCliente extends javax.swing.JInternalFrame {
                 else{
                     btnAlterar.setEnabled(true);
                     btnExcluir.setEnabled(true);
+                    btnGravar.setEnabled(false);
                 }
-                
-                
-                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
