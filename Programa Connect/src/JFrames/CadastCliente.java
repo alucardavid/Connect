@@ -33,10 +33,6 @@ public class CadastCliente extends javax.swing.JInternalFrame {
         
     }
 
-    CadastCliente(String toString, String string, String string0, String string1, String string2, String string3, String string4, String string5) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     private boolean ValidarCampos(){
         Component[] components = this.getContentPane().getComponents();
         for (Component component : components) {

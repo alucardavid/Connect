@@ -138,8 +138,7 @@ public class PesquisaClientes extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_tblClientesMouseClicked
-
-        
+       
     private void AtualizarTabelaClientes(){
         Connection conn = null;
         Statement statement;

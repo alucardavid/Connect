@@ -109,7 +109,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiConsultarClienteActionPerformed
 
     private void jmiCadastrarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarProjetoActionPerformed
-        
+        CadastProjeto nCadastProjeto =  new CadastProjeto();
+        dkpPrincipal.add(nCadastProjeto);
+        nCadastProjeto.setVisible(true);
     }//GEN-LAST:event_jmiCadastrarProjetoActionPerformed
 
     public static void main(String args[]) {
