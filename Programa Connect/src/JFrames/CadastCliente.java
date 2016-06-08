@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import programa.connect.Cliente;
+import programa.connect.Util;
 
 /**
  *
@@ -12,7 +13,7 @@ public class CadastCliente extends javax.swing.JInternalFrame {
 
     public CadastCliente() {
         initComponents();
-        tbxCodigo.setText(Integer.toString(Cliente.GerarCodigo()));
+        tbxCodigo.setText(Integer.toString(Util.GerarCodigo("CLIENTES", "ID")));
         btnAlterar.setEnabled(false);
         btnExcluir.setEnabled(false);
     }
@@ -29,23 +30,7 @@ public class CadastCliente extends javax.swing.JInternalFrame {
         btnGravar.setEnabled(false);
     }
     
-    public static void main(String[] args) {
-        
-    }
-
-    private boolean ValidarCampos(){
-        Component[] components = this.getContentPane().getComponents();
-        for (Component component : components) {
-            if (component instanceof JTextField) {
-                JTextComponent sObject = (JTextComponent) component;
-                if (sObject.getText().equals("")) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-   
+    
     @SuppressWarnings("unchecked")
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -188,14 +173,14 @@ public class CadastCliente extends javax.swing.JInternalFrame {
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         int n;
-        if (ValidarCampos()) {
+        if (Util.ValidarCampoTextoVazio(this)) {
             try {
                 Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
                 nCliente.AdicionarCliente();
                 n = JOptionPane.showOptionDialog(null, "Gostaria de adicionar outro cliente?", "Connect", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, iconable);
                 if (n==0) {
-                    LimparCampos();
-                    tbxCodigo.setText(Integer.toString(Cliente.GerarCodigo()));
+                    Util.LimparCamposTexto(this);
+                    tbxCodigo.setText(Integer.toString(Util.GerarCodigo("CLIENTES", "ID")));
                 }
                 else{
                     btnAlterar.setEnabled(true);
@@ -212,7 +197,7 @@ public class CadastCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if (ValidarCampos()) {
+        if (Util.ValidarCampoTextoVazio(this)) {
             try {
                 Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
                 nCliente.AlterarCliente();
@@ -223,14 +208,15 @@ public class CadastCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (ValidarCampos()) {
+        if (Util.ValidarCampoTextoVazio(this)) {
             try {
                 Cliente nCliente = new Cliente(tbxNome.getText(), tbxRua.getText(), tbxCidade.getText(), tbxCep.getText(), tbxTelefone.getText(), tbxCnpjCpf.getText(), tbxCodigo.getText());
                 nCliente.ExcluirCliente();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-            LimparCampos();
+            Util.LimparCamposTexto(this);
+            tbxCodigo.setText(Integer.toString(Util.GerarCodigo("CLIENTES", "ID")));
             btnAlterar.setEnabled(false);
             btnExcluir.setEnabled(false);
         }
@@ -239,21 +225,7 @@ public class CadastCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
     
-    private void LimparCampos(){
-        try {
-            Component[] components = this.getContentPane().getComponents();
-            for (Component component : components) {
-                if (component instanceof JTextField) {
-                    JTextComponent sObject = (JTextComponent) component;
-                    sObject.setText("");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;

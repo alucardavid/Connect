@@ -4,6 +4,7 @@ import java.awt.Component;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import programa.connect.Projeto;
+import programa.connect.Util;
 
 
 /**
@@ -145,144 +146,37 @@ public class CadastProjeto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String[] args) {
-        
-    }
     
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         Projeto nProjeto = new Projeto((tbxNome.getText()), txaDescricao.getText(), tbxOrcamento.getText(), tbxDtInicio.getText(), tbxDtConclusao.getText());
-        if (ValidarCampos()) {
+        if (Util.ValidarCampoTextoVazio(this)) {
             nProjeto.GravarProjeto();
         }
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void tbxDtInicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxDtInicioKeyReleased
-        FormatarCampoData(tbxDtInicio);
+        Util.FormatarCampoData(tbxDtInicio);
     }//GEN-LAST:event_tbxDtInicioKeyReleased
 
     private void tbxDtInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxDtInicioKeyTyped
-        NegarInputTexto(evt);
+        Util.NegarInputTexto(evt);
     }//GEN-LAST:event_tbxDtInicioKeyTyped
 
     private void tbxDtConclusaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxDtConclusaoKeyTyped
-        NegarInputTexto(evt);
+        Util.NegarInputTexto(evt);
     }//GEN-LAST:event_tbxDtConclusaoKeyTyped
 
     private void tbxDtConclusaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxDtConclusaoKeyReleased
-        FormatarCampoData(tbxDtConclusao);
+        Util.FormatarCampoData(tbxDtConclusao);
     }//GEN-LAST:event_tbxDtConclusaoKeyReleased
 
     private void tbxOrcamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxOrcamentoKeyReleased
-        FormatarCampoValor(tbxOrcamento);
+        Util.FormatarCampoValor(tbxOrcamento);
     }//GEN-LAST:event_tbxOrcamentoKeyReleased
 
     private void tbxOrcamentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxOrcamentoKeyTyped
-        NegarInputTexto(evt);
+        Util.NegarInputTexto(evt);
     }//GEN-LAST:event_tbxOrcamentoKeyTyped
-
-    private void FormatarCampoData(JTextField campo){
-        String data, dia, mes, ano, tmp;
-        int count;
-        data = campo.getText().replace("/", "");
-        dia = campo.getText().replace("/", "");
-        mes = campo.getText().replace("/", "");
-        ano = campo.getText().replace("/", "");
-        count = data.length();
-        switch (count){
-            case 2:
-                campo.setText(data);
-                break;
-            case 3:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 3);
-                campo.setText(tmp);
-                break;
-            case 4:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4);
-                campo.setText(tmp);
-                break;
-            case 5:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4) + "/" + ano.substring(4,5);
-                campo.setText(tmp); 
-                break;
-            case 6:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4) + "/" + ano.substring(4,6);
-                campo.setText(tmp); 
-                break;
-            case 7:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4) + "/" + ano.substring(4,7);
-                campo.setText(tmp); 
-                break;
-            case 8:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4) + "/" + ano.substring(4,8);
-                campo.setText(tmp); 
-                break;
-            case 9:
-                tmp = dia.substring(0, 2) + "/" + mes.substring(2, 4) + "/" + ano.substring(4,8);
-                campo.setText(tmp); 
-                break;
-        }
-    }
-    
-    private void NegarInputTexto(java.awt.event.KeyEvent evt){
-        String carac = "0987654321";
-        if (!carac.contains(evt.getKeyChar()+"")) {
-            evt.consume();
-        }
-    }
-    
-    private void FormatarCampoValor(JTextField campo){
-        String tmp, tmp2, valor;
-        int count;
-        valor = campo.getText().replace(",", "").replace(".", "");
-        count = valor.length();
-        switch(count){
-            case 2:
-                campo.setText(valor);
-                break;
-            case 3:
-                tmp = valor.substring(0, 2) + "," + valor.substring(2, 3);
-                campo.setText(tmp);
-                break;
-            case 4:
-                tmp = valor.substring(0, 2) + "," + valor.substring(2, 4);
-                campo.setText(tmp);
-                break;
-            case 5:
-                tmp = valor.substring(0, 3) + "," + valor.substring(3, 5);
-                campo.setText(tmp);
-                break;
-            case 6:
-                tmp = valor.substring(0, 1) + "." + valor.substring(1, 4) + "," + valor.substring(4, 6);
-                campo.setText(tmp);
-                break;
-            case 7:
-                tmp = valor.substring(0, 2) + "." + valor.substring(2, 5) + "," + valor.substring(5, 7);
-                campo.setText(tmp);
-                break;
-            case 8:
-                tmp = valor.substring(0, 3) + "." + valor.substring(3, 6) + "," + valor.substring(6, 8);
-                campo.setText(tmp);
-                break;
-            case 9:
-                tmp = valor.substring(0, 1) + "." + valor.substring(1, 4) + "." + valor.substring(4, 7) + "," + valor.substring(7, 9);
-                campo.setText(tmp);
-                break;
-        }
-    }
-    
-    private boolean ValidarCampos(){
-        Component[] components = this.getContentPane().getComponents();
-        for (Component component : components) {
-            if (component instanceof JTextField) {
-                JTextComponent sObject = (JTextComponent) component;
-                if (sObject.getText().equals("")) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGravar;
     private javax.swing.JScrollPane jScrollPane1;

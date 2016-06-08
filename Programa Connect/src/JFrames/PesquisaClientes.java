@@ -163,7 +163,7 @@ public class PesquisaClientes extends javax.swing.JInternalFrame {
             rs.close();
             conn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Houve algum incidente ao conectar na base de dados, favor informar ao administrador do sistema.");
         }
     }
 

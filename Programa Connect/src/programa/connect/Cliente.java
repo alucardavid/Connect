@@ -82,19 +82,19 @@ public class Cliente {
     }
     
     public void AlterarCliente(){
-        Connection conn = null;
-        PreparedStatement psSel = null;
-        PreparedStatement psUpd = null;
-        ResultSet rs = null;
+        Connection conn;
+        PreparedStatement psSel, psUpd;
+        ResultSet rs;
         String cmdSel = "SELECT * FROM CLIENTES WHERE ID='" + id + "'";
         String cmdUpt = "UPDATE CLIENTES SET NOME='" + nome + "', RUA='" + rua + "', CIDADE='" + cidade + "', " 
                       + "CEP='" + cep + "', TELEFONE='" + telefone + "', CNPJ_CPF='" + cpfCnpj + "' WHERE ID='" + id +"'";
         try {
             conn = Oracle.ObterConexao();
             psSel = conn.prepareStatement(cmdSel);
+            psUpd = conn.prepareStatement(cmdUpt);
             rs= psSel.executeQuery();
             if (rs.next()) {
-                psUpd = conn.prepareStatement(cmdUpt);
+                
                 psUpd.executeUpdate();
                 JOptionPane.showMessageDialog(null, "As informações foram atualizadas para esse cliente.");
             }
@@ -109,34 +109,5 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
-    public static int GerarCodigo(){
-        // VARIAVEL PARA GERAR UM NUMERO RANDOMICO
-        Random gerador = new Random();
-        int codRandom;
-        String querySel;
-        ResultSet resultSet;
-        boolean teste = false;
-        try {
-            Connection conn = Oracle.ObterConexao();
-            Statement statement = conn.createStatement();
-            while (!teste) { 
-                codRandom = gerador.nextInt(10000);
-                querySel = "SELECT * FROM CLIENTES WHERE ID='" + codRandom + "'";
-                resultSet = statement.executeQuery(querySel);
-                if (resultSet.next()) {
-                    
-                }
-                else{
-                    teste = true;
-                    conn.close();
-                    return codRandom;
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            return 0;
-        }
-        return 0;
-    }
+       
 }

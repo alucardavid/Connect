@@ -26,6 +26,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jmiConsultarCliente = new javax.swing.JMenuItem();
         jmnProjetos = new javax.swing.JMenu();
         jmiCadastrarProjeto = new javax.swing.JMenuItem();
+        jmnRH = new javax.swing.JMenu();
+        jmiCadastrarFuncionario = new javax.swing.JMenuItem();
+        jmiPesquisarFuncionario = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -79,6 +82,21 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuBar2.add(jmnProjetos);
 
+        jmnRH.setText("RH");
+
+        jmiCadastrarFuncionario.setText("Cadastrar Funcionario");
+        jmiCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+        jmnRH.add(jmiCadastrarFuncionario);
+
+        jmiPesquisarFuncionario.setText("Pesquisar Funcionario");
+        jmnRH.add(jmiPesquisarFuncionario);
+
+        jMenuBar2.add(jmnRH);
+
         setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,6 +132,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         nCadastProjeto.setVisible(true);
     }//GEN-LAST:event_jmiCadastrarProjetoActionPerformed
 
+    private void jmiCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarFuncionarioActionPerformed
+        CadastFuncionario nCadastFuncionario = new CadastFuncionario();
+        dkpPrincipal.add(nCadastFuncionario);
+        nCadastFuncionario.setVisible(true);
+    }//GEN-LAST:event_jmiCadastrarFuncionarioActionPerformed
+
     public static void main(String args[]) {
        
         /* Create and display the form */
@@ -130,9 +154,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jmiCadastrarCliente;
+    private javax.swing.JMenuItem jmiCadastrarFuncionario;
     private javax.swing.JMenuItem jmiCadastrarProjeto;
     private javax.swing.JMenuItem jmiConsultarCliente;
+    private javax.swing.JMenuItem jmiPesquisarFuncionario;
     private javax.swing.JMenu jmnProjetos;
+    private javax.swing.JMenu jmnRH;
     private javax.swing.JMenu mbClientes;
     // End of variables declaration//GEN-END:variables
 }
