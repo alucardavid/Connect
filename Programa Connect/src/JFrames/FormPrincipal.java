@@ -29,6 +29,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jmnRH = new javax.swing.JMenu();
         jmiCadastrarFuncionario = new javax.swing.JMenuItem();
         jmiPesquisarFuncionario = new javax.swing.JMenuItem();
+        jmnFinanceiro = new javax.swing.JMenu();
+        jmnCompras = new javax.swing.JMenu();
+        jmiCadastrarNfs = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -93,9 +96,29 @@ public class FormPrincipal extends javax.swing.JFrame {
         jmnRH.add(jmiCadastrarFuncionario);
 
         jmiPesquisarFuncionario.setText("Pesquisar Funcionario");
+        jmiPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPesquisarFuncionarioActionPerformed(evt);
+            }
+        });
         jmnRH.add(jmiPesquisarFuncionario);
 
         jMenuBar2.add(jmnRH);
+
+        jmnFinanceiro.setText("Financeiro");
+        jMenuBar2.add(jmnFinanceiro);
+
+        jmnCompras.setText("Compras");
+
+        jmiCadastrarNfs.setText("Cadastrar NFs");
+        jmiCadastrarNfs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastrarNfsActionPerformed(evt);
+            }
+        });
+        jmnCompras.add(jmiCadastrarNfs);
+
+        jMenuBar2.add(jmnCompras);
 
         setJMenuBar(jMenuBar2);
 
@@ -138,6 +161,18 @@ public class FormPrincipal extends javax.swing.JFrame {
         nCadastFuncionario.setVisible(true);
     }//GEN-LAST:event_jmiCadastrarFuncionarioActionPerformed
 
+    private void jmiPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPesquisarFuncionarioActionPerformed
+        PesquisaFuncionario nPesquisaFuncionario = new PesquisaFuncionario();
+        dkpPrincipal.add(nPesquisaFuncionario);
+        nPesquisaFuncionario.setVisible(true);
+    }//GEN-LAST:event_jmiPesquisarFuncionarioActionPerformed
+
+    private void jmiCadastrarNfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarNfsActionPerformed
+        CadastCompras nCadastCompras = new CadastCompras();
+        dkpPrincipal.add(nCadastCompras);
+        nCadastCompras.setVisible(true);
+    }//GEN-LAST:event_jmiCadastrarNfsActionPerformed
+
     public static void main(String args[]) {
        
         /* Create and display the form */
@@ -155,9 +190,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jmiCadastrarCliente;
     private javax.swing.JMenuItem jmiCadastrarFuncionario;
+    private javax.swing.JMenuItem jmiCadastrarNfs;
     private javax.swing.JMenuItem jmiCadastrarProjeto;
     private javax.swing.JMenuItem jmiConsultarCliente;
     private javax.swing.JMenuItem jmiPesquisarFuncionario;
+    private javax.swing.JMenu jmnCompras;
+    private javax.swing.JMenu jmnFinanceiro;
     private javax.swing.JMenu jmnProjetos;
     private javax.swing.JMenu jmnRH;
     private javax.swing.JMenu mbClientes;

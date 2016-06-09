@@ -77,6 +77,29 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pesquisar Funcionario"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiPesquisarFuncionarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmnFinanceiro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Financeiro"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmnCompras">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Compras"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCadastrarNfs">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar NFs"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCadastrarNfsActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

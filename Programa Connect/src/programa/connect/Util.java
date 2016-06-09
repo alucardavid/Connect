@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Random;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import oracle.Oracle;
@@ -23,6 +24,7 @@ import oracle.Oracle;
  * @author David
  */
 public class Util {
+    
     public static String FormatData(String data){
         Date result;
         try {

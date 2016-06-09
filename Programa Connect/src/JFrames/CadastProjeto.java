@@ -152,6 +152,9 @@ public class CadastProjeto extends javax.swing.JInternalFrame {
         if (Util.ValidarCampoTextoVazio(this)) {
             nProjeto.GravarProjeto();
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatorios");
+        }
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void tbxDtInicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbxDtInicioKeyReleased
