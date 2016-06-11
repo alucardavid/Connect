@@ -1,7 +1,17 @@
 package JFrames;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import oracle.Oracle;
 
 /**
  *
@@ -30,6 +40,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         jmiCadastrarFuncionario = new javax.swing.JMenuItem();
         jmiPesquisarFuncionario = new javax.swing.JMenuItem();
         jmnFinanceiro = new javax.swing.JMenu();
+        jmnRelatoriosDespesa = new javax.swing.JMenu();
+        jmiFuncionarios = new javax.swing.JMenuItem();
+        jmiCompras = new javax.swing.JMenuItem();
+        jmnRelatoriosReceita = new javax.swing.JMenu();
+        jmiProjetos = new javax.swing.JMenuItem();
         jmnCompras = new javax.swing.JMenu();
         jmiCadastrarNfs = new javax.swing.JMenuItem();
 
@@ -106,6 +121,39 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuBar2.add(jmnRH);
 
         jmnFinanceiro.setText("Financeiro");
+
+        jmnRelatoriosDespesa.setText("Relatório - Despesas");
+
+        jmiFuncionarios.setText("Funcionários");
+        jmiFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFuncionariosActionPerformed(evt);
+            }
+        });
+        jmnRelatoriosDespesa.add(jmiFuncionarios);
+
+        jmiCompras.setText("Compras");
+        jmiCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiComprasActionPerformed(evt);
+            }
+        });
+        jmnRelatoriosDespesa.add(jmiCompras);
+
+        jmnFinanceiro.add(jmnRelatoriosDespesa);
+
+        jmnRelatoriosReceita.setText("Relatório - Receitas");
+
+        jmiProjetos.setText("Projetos");
+        jmiProjetos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiProjetosActionPerformed(evt);
+            }
+        });
+        jmnRelatoriosReceita.add(jmiProjetos);
+
+        jmnFinanceiro.add(jmnRelatoriosReceita);
+
         jMenuBar2.add(jmnFinanceiro);
 
         jmnCompras.setText("Compras");
@@ -173,6 +221,42 @@ public class FormPrincipal extends javax.swing.JFrame {
         nCadastCompras.setVisible(true);
     }//GEN-LAST:event_jmiCadastrarNfsActionPerformed
 
+    private void jmiFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFuncionariosActionPerformed
+        try {
+            JasperReport jr = JasperCompileManager.compileReport(this.getClass().getResourceAsStream("/Reports/Despesas_Funcionarios.jrxml"));
+            HashMap parameters = new HashMap();
+            JasperPrint impressao = JasperFillManager.fillReport(jr, parameters, Oracle.ObterConexao());
+            JasperViewer jrViewer = new JasperViewer(impressao, false);
+            jrViewer.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jmiFuncionariosActionPerformed
+
+    private void jmiComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiComprasActionPerformed
+        try {
+            JasperReport jr = JasperCompileManager.compileReport(this.getClass().getResourceAsStream("/Reports/Despesas_Compras.jrxml"));
+            HashMap parameters = new HashMap();
+            JasperPrint impressao = JasperFillManager.fillReport(jr, parameters, Oracle.ObterConexao());
+            JasperViewer jrViewer = new JasperViewer(impressao, false);
+            jrViewer.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jmiComprasActionPerformed
+
+    private void jmiProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProjetosActionPerformed
+        try {
+            JasperReport jr = JasperCompileManager.compileReport(this.getClass().getResourceAsStream("/Reports/Receitas_Projetos.jrxml"));
+            HashMap parameters = new HashMap();
+            JasperPrint impressao = JasperFillManager.fillReport(jr, parameters, Oracle.ObterConexao());
+            JasperViewer jrViewer = new JasperViewer(impressao, false);
+            jrViewer.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jmiProjetosActionPerformed
+
     public static void main(String args[]) {
        
         /* Create and display the form */
@@ -192,12 +276,17 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiCadastrarFuncionario;
     private javax.swing.JMenuItem jmiCadastrarNfs;
     private javax.swing.JMenuItem jmiCadastrarProjeto;
+    private javax.swing.JMenuItem jmiCompras;
     private javax.swing.JMenuItem jmiConsultarCliente;
+    private javax.swing.JMenuItem jmiFuncionarios;
     private javax.swing.JMenuItem jmiPesquisarFuncionario;
+    private javax.swing.JMenuItem jmiProjetos;
     private javax.swing.JMenu jmnCompras;
     private javax.swing.JMenu jmnFinanceiro;
     private javax.swing.JMenu jmnProjetos;
     private javax.swing.JMenu jmnRH;
+    private javax.swing.JMenu jmnRelatoriosDespesa;
+    private javax.swing.JMenu jmnRelatoriosReceita;
     private javax.swing.JMenu mbClientes;
     // End of variables declaration//GEN-END:variables
 }

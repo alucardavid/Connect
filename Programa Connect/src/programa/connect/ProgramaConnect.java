@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 public class ProgramaConnect {
 
     public static void main(String[] args) {
-        /*// CARREGAR FAVICON
+       // CARREGAR FAVICON
         URL urlFavIconUrl = Login.class.getResource("/imgs/favicon.png");
         URL urlLogo = Login.class.getResource("/imgs/logo.png");
         // CRIO DUAS INSTANCIAS DE IMAGEICON
@@ -27,10 +27,10 @@ public class ProgramaConnect {
         // CENTRALIZAR JFRAME
         nLogin.setLocationRelativeTo(null);
         // MOSTRAR  JFRAME LOGIN
-        nLogin.setVisible(true);*/
-        FormPrincipal  nFormPrincipal = new FormPrincipal();
+        nLogin.setVisible(true);
+        /*FormPrincipal  nFormPrincipal = new FormPrincipal();
         nFormPrincipal.setLocation(100, 100);
-        nFormPrincipal.setVisible(true);
+        nFormPrincipal.setVisible(true);*/
         
     }
     

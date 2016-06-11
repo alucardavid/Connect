@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -125,6 +126,19 @@ public class Util {
     
     public static boolean ValidarCampoTextoVazio(JInternalFrame internalFrame){
         Component[] components = internalFrame.getContentPane().getComponents();
+        for (Component component : components) {
+            if (component instanceof JTextField) {
+                JTextComponent sObject = (JTextComponent) component;
+                if (sObject.getText().equals("")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    public static boolean ValidarCampoTextoVazio(JFrame frame){
+        Component[] components = frame.getContentPane().getComponents();
         for (Component component : components) {
             if (component instanceof JTextField) {
                 JTextComponent sObject = (JTextComponent) component;

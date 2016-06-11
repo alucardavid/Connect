@@ -1,12 +1,16 @@
 package oracle;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author David
  */
-public class Oracle {
+public final class Oracle {
+    
+    public static String host = "@localhost", port = "1521", sid = "xe", user = "ADMIN", pwd = "mudar123";
+    
     public static void main(String[] args) {
         
     }
@@ -15,12 +19,11 @@ public class Oracle {
         Connection conexao = null;
         try {
              Class.forName("oracle.jdbc.driver.OracleDriver");
-             conexao = DriverManager.getConnection(
-                                "jdbc:oracle:thin:@localhost:1521:xe", "ADMIN", "mudar123");
+             conexao = DriverManager.getConnection("jdbc:oracle:thin:" + host + ":" + port + ":" + sid + "", user, pwd);
         } catch (ClassNotFoundException e) {
-                 e.printStackTrace();
+                JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (SQLException e) {
-                 e.printStackTrace();
+                 JOptionPane.showMessageDialog(null, e.getMessage());
         }
          return conexao;
     }

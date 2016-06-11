@@ -22,12 +22,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tbxUser = new javax.swing.JTextField();
         btnLogar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         tbxPwd = new javax.swing.JPasswordField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmnDB = new javax.swing.JMenu();
+        jmiConfigurarDB = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connect");
@@ -43,6 +49,20 @@ public class Login extends javax.swing.JFrame {
                 btnLogarActionPerformed(evt);
             }
         });
+
+        jmnDB.setText("Banco de dados");
+
+        jmiConfigurarDB.setText("Configurar");
+        jmiConfigurarDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConfigurarDBActionPerformed(evt);
+            }
+        });
+        jmnDB.add(jmiConfigurarDB);
+
+        jMenuBar1.add(jmnDB);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,7 +87,7 @@ public class Login extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -77,7 +97,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tbxPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogar)
                 .addContainerGap())
         );
@@ -95,6 +115,12 @@ public class Login extends javax.swing.JFrame {
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         ValidarLogin();
     }//GEN-LAST:event_btnLogarActionPerformed
+
+    private void jmiConfigurarDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConfigurarDBActionPerformed
+        ConfigurarDB nConfigurarDB = new ConfigurarDB();
+        nConfigurarDB.setLocationRelativeTo(null);
+        nConfigurarDB.setVisible(true);
+    }//GEN-LAST:event_jmiConfigurarDBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +185,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmiConfigurarDB;
+    private javax.swing.JMenu jmnDB;
     public javax.swing.JLabel lblLogo;
     public javax.swing.JPasswordField tbxPwd;
     public javax.swing.JTextField tbxUser;
